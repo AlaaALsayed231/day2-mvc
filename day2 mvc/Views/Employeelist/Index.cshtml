@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    int i = 0;
+}
+
+@model List<Employee>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Fname</th>
+            <th scope="col">Lname</th>
+            <th scope="col">Salary</th>
+            <th scope="col">address</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Employee std in Model)
+        {
+            <tr>
+                <th scope="row">@(++i)</th>
+                <td>@std.Fname</td>
+                <td>@std.Lname</td>
+                <td>@std.Salary</td>
+                <td>@std.Address</td>
+                
+                <td>
+                  
+                    | <a>Edit</a>
+                    | <a>Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button type="submit" class="btn btn-primary"><a asp-action="Add" asp-controller="Employeelist">Add New Employee</a></button>

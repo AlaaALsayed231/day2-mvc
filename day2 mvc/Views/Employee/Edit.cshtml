@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model EmployeeEditViewModel
+
+<h2>Edit Employee</h2>
+
+<div class="container">
+    <form id="editForm">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label for="employeeFullName">Employee Name</label>
+            <input type="text" class="form-control" id="employeeFullName" name="EmployeeFullName" value="@Model.EmployeeFullName" />
+        </div>
+
+        <div class="form-group">
+            <label for="selectedProject">Select Project</label>
+            @Html.DropDownListFor(model => model.SelectedProject, Model.Projects, "Select Project", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label for="hours">Hours</label>
+            <input type="number" class="form-control" id="hours" name="Hours" value="@Model.Hours" />
+        </div>
+
+        <button type="button" class="btn btn-primary" id="updateButton">Update</button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#updateButton').click(function () {
+            var formData = $('#editForm').serialize();
+
+            $.ajax({
+                url: '@Url.Action("Edit")',
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    // Handle success (e.g., show a success message)
+                    console.log('Update successful');
+                },
+                error: function (xhr, status, error) {
+                    // Handle error (e.g., show an error message)
+                    console.error('Update failed');
+                }
+            });
+        });
+    });
+</script>
+

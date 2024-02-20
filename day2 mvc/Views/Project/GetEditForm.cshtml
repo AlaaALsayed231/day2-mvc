@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+}
+@model Project
+
+<h1>Edit employee</h1>
+<form action="/Project/update">
+    <input name="id" hidden value="@Model.Id" />
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="Text" class="form-control" id="name" name="name" value="@Model.Pname">
+    </div>
+    <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input type="Text" class="form-control" id="location" name="location" value="@Model.Plocation">
+    </div>
+    <div class="mb-3">
+        <label for="city" class="form-label">City</label>
+        <input type="Text" class="form-control" id="city" name="city" value="@Model.City">
+    </div>
+
+    <div class="mb-3 form-check">
+        <label class="form-check-label" for="department">Department</label>
+        <select name="deptId" id="department">
+            @foreach (Departments item in ViewBag.departments)
+            {
+                if (Model.Dnum == item.Id)
+                {
+                    <option value="@item.Id" selected>@item.Dname</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.Dname</option>
+
+                }
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form> 

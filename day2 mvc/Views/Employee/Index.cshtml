@@ -1,0 +1,80 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Employee>
+<script>
+
+    function viewProduct(event) {
+        // Redirect to another view (replace '/ControllerName/ActionName' with your actual controller and action)
+        window.location.href = `/Employee/Details/${event.target.id}`;
+    }
+</script>
+
+@{
+   
+    ViewData["Title"] = "Index";
+    int i = 1;
+}
+
+<div class="container">
+<h1 class="con">Employee List</h1>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"> FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Address</th>
+           @*  <th scope="col">Sex</th> *@
+            <th scope="col">Salary</th>
+          @*   <th scope="col">Dirthdate</th>
+            <th scope="col"> Details</th> *@
+        </tr>
+    </thead>
+
+  
+
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@(i++)</th>
+                <td> @item.Fname</td>
+                <td>   @item.Lname</td>
+                <td>   @item.Address</td>
+                <td>   @item.Sex</td>
+                <td>   @item.Salary</td>
+                @* <td>   @item.Bdate</td>
+                <td><button type="button" id="@item.Id" onclick="viewProduct(event)">Details</button></td> *@
+
+            </tr>
+
+ }
+        </tbody>
+   
+</table>
+</div>
+
+   <style>
+       div{
+           padding:30px;
+           margin:10px
+       }
+       .con{
+           text-align:center;
+           margin:10px;
+           margin-bottom:10px;
+           padding-bottom:20px;
+           text-decoration:underline;
+
+           
+       }
+      
+     
+   </style>
+

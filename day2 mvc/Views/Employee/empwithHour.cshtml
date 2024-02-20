@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<dynamic>
+
+<h2>Employees with Projects and Hours</h2>
+
+@foreach (var employee in Model)
+{
+    <div>
+        <h4>@employee.EmployeeFullName</h4>
+        <ul>
+            @foreach (var project in employee.Projects)
+            {
+                <li>@project.ProjectName - Hours: @project.Hours</li>
+            }
+        </ul>
+    </div>
+}
+

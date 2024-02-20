@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Departments>
+@{
+    int i = 0;
+}
+
+<style>
+    button {
+        margin: 20px
+    }
+
+    h1 {
+        text-align: center;
+        margin: 15px;
+        padding: 15px
+    }
+</style>
+
+<h1>Department List </h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Departmentname</th>
+            <th scope="col">Manger date</th>
+            <th scope="col">manger name</th>
+           
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@(++i)</th>
+                <td>@item.Dname</td>
+                <td>@item.MGRStartDate</td>
+                <td>@item.manger.Fname</td>
+
+
+
+                <td>
+                   
+                    <a href="/Department/Edit/@item.Id" id="@item.Id">Edit</a> |
+                   
+                    <a href="/Department/delete/@item.Id">Delete</a>
+
+                </td>
+                
+             @*    <td>@item.employees. </td>
+               <td>
+                    <a class="btn btn-success" href="/Project/details/@item.Id">Details</a> |
+                    <a class="btn btn-success" href="/Project/GetEditForm/@item.Id">Edit</a> |
+                    <a class="btn btn-success" href="/Project/delete/@item.Id">Delete</a>
+
+                </td> *@ 
+            </tr>
+        }
+    </tbody>
+
+  
+</table>
+<button type="submit" class="btn btn-primary"> <a href=/Department/add> Add New Department</button>

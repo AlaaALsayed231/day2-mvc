@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Employee
+
+
+
+@{
+    Layout = "_secendLayout";
+}
+
+
+<h1> Details </h1>
+<style>
+    h1 {
+        text-align: center;
+        text-decoration: underline;
+    }
+</style>
+
+
+
+
+<div class="card">
+
+    <div class="card-body">
+
+        <h5 class="card-title">firstName : @Model.Fname</h5>
+        <h5 class="card-title">LastName : @Model.Lname</h5>
+        <h5 class="card-text"> ADDress :@Model.Address.</h5>
+        <h5 class="card-title">Age  : @Model.Sex</h5>
+        <h5 class="card-text"> Salary  :@Model.Salary</h5>
+        <h5 class="card-title">@Model.Bdate</h5>
+        <a href="#" class="btn btn-primary">back</a>
+    </div>
+</div>
+
+
+@section SidebarTitle {
+       Details of EmployeeName: @Model.Fname @Model.Lname
+}

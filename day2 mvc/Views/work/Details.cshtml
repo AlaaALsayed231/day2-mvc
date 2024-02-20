@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    int i = 1;
+}
+@model List<Works_For>
+
+<h2>Works For Details for @ViewBag.EmployeeName</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Project Name</th>
+            <th scope="col">Hours</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(i++)</td>
+                <td>@item.project.Pname</td>
+                <td style="color: @ViewBag.Colors[i-2]">@item.Hours</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/work/Index">Back to Works For List</a>

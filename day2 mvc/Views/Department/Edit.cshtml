@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    SelectList list = new SelectList(ViewBag.UNmange, "Id", "Fname");
+}
+@model Departments
+
+<h1>Edit Department</h1>
+<form asp-action="EditDB" asp-controller="Department">
+    <input asp-for="Id" hidden />
+    <div class="mb-3">
+        <label asp-for="Dname" class="form-label"></label>
+        <input class="form-control" asp-for="Dname">
+    </div>
+    <div class="mb-3">
+        <label asp-for="MGRStartDate" class="form-label"></label>
+        <input class="form-control" asp-for="MGRStartDate">
+    </div>
+    @*  <div class="mb-3">
+    <label asp-for="manger" class="form-label"></label>
+    <input class="form-control" asp-for="manger">
+    </div> *@
+
+    <div class="mb-3 form-check">
+        <label class="form-check-label" asp-for="MGRSSN"> Manger Name</label>
+        <select asp-for="MGRSSN" class="form-control" asp-items="list">
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form>

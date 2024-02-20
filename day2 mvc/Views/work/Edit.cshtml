@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Works_For
+@{
+    SelectList list = new SelectList(ViewBag.project, "Pnumber", "Pname");
+    Employee emp = ViewBag.employee;
+
+
+}
+
+
+<h2>Edit Works_for</h2>
+
+<form asp-action="EditDB" asp-controller="work">
+    <input hidden asp-for="ESSN" value="@ViewBag.employee.Id" />
+    <div class="form-group">
+        <label class="control-label">first name</label>
+        <input value="@ViewBag.employee.Fname" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">last name</label>
+        <input value="@ViewBag.employee.Lname" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Pno" class="control-label">Project</label>
+        <select asp-for="Pno" asp-items="list" class="form-select" onchange="gethour(this.value,@emp.Id)"></select>
+    </div>
+    <div class="form-group" id="hh">
+    </div>
+    <button class="btn btn-primary" type="submit">Edit</button>
+</form>
+@section scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/java.js"></script>
+}
+

@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    int i = 1;
+}
+@model day2_mvc.Models.Employee
+
+<h2>Edit Employee</h2>
+
+<form asp-action="Update" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Fname">First Name:</label>
+        <input asp-for="Fname" class="form-control" />
+        <span asp-validation-for="Fname" class="text-danger"></span>
+    </div>
+
+    <!-- Add similar form fields for other properties -->
+
+    <h3>Edit Projects and Work Hours</h3>
+    @foreach (var project in Model.works_Fors)
+    {
+        <div class="form-group">
+            <label asp-for="@($"works_Fors[{project.Pno}].project.Id")">@project.project.Pname:</label>
+            <input type="hidden" asp-for="@($"works_Fors[{project.Pno}].project.Id")" />
+            <input type="number" asp-for="@($"works_Fors[{project.Pno}].Hours")" class="form-control" />
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
